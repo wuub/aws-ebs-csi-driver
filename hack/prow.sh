@@ -40,7 +40,7 @@ docker run --rm --privileged multiarch/qemu-user-static --reset -p yes
 
 loudecho "Build and push debian target"
 docker buildx build \
-  --tag=gcr.io/k8s-staging-provider-aws/aws-ebs-csi-driver:"$_GIT_TAG" \
+  --tag=gcr.io/k8s-staging-provider-aws/aws-ebs-csi-driver:"${GIT_TAG}" \
   --tag=gcr.io/k8s-staging-provider-aws/aws-ebs-csi-driver:latest \
   --platform=linux/arm64,linux/amd64 \
   --output="type=image,push=true" . \
@@ -48,7 +48,7 @@ docker buildx build \
 
 loudecho "Build and push amazonlinux target"
 docker buildx build \
-  --tag=gcr.io/k8s-staging-provider-aws/aws-ebs-csi-driver:"$_GIT_TAG"-amazonlinux \
+  --tag=gcr.io/k8s-staging-provider-aws/aws-ebs-csi-driver:"${GIT_TAG}"-amazonlinux \
   --tag=gcr.io/k8s-staging-provider-aws/aws-ebs-csi-driver:latest-amazonlinux \
   --platform=linux/arm64,linux/amd64 \
   --output="type=image,push=true" . \
