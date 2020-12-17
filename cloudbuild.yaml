@@ -1,6 +1,6 @@
 timeout: 1200s
 steps:
-  - name: gcr.io/cloud-builders/docker
+  - name: gcr.io/k8s-testimages/gcb-docker-gcloud:v20200421-a2bf5f8
     entrypoint: ./hack/prow.sh
     env:
       - HOME=/root
