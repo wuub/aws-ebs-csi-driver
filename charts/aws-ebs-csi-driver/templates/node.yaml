@@ -25,15 +25,10 @@ spec:
         {{- toYaml . | nindent 8 }}
       {{- end }}
     spec:
+      {{- with .Values.node.affinity }}
       affinity:
-        nodeAffinity:
-          requiredDuringSchedulingIgnoredDuringExecution:
-            nodeSelectorTerms:
-            - matchExpressions:
-              - key: eks.amazonaws.com/compute-type
-                operator: NotIn
-                values:
-                - fargate
+        {{- toYaml . | nindent 8 }}
+      {{- end }}
       nodeSelector:
         kubernetes.io/os: linux
         {{- with .Values.node.nodeSelector }}
